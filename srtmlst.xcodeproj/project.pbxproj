@@ -1,0 +1,366 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C776D0821CBDA49A00621F98 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D0811CBDA49A00621F98 /* main.swift */; };
+		C776D0891CBDA4EF00621F98 /* RTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D0881CBDA4EF00621F98 /* RTMClient.swift */; };
+		C776D08B1CBDA59500621F98 /* Keyfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D08A1CBDA59500621F98 /* Keyfile.swift */; };
+		C776D08D1CBDB93B00621F98 /* RTMParamSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D08C1CBDB93B00621F98 /* RTMParamSigner.swift */; };
+		C776D09B1CBDBA0200621F98 /* RTMParamSigner_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D09A1CBDBA0200621F98 /* RTMParamSigner_test.swift */; };
+		C776D09C1CBDBA4800621F98 /* RTMParamSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D08C1CBDB93B00621F98 /* RTMParamSigner.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C776D07C1CBDA49A00621F98 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C776D07E1CBDA49A00621F98 /* srtmlst */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = srtmlst; sourceTree = BUILT_PRODUCTS_DIR; };
+		C776D0811CBDA49A00621F98 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		C776D0881CBDA4EF00621F98 /* RTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMClient.swift; sourceTree = "<group>"; };
+		C776D08A1CBDA59500621F98 /* Keyfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyfile.swift; sourceTree = "<group>"; };
+		C776D08C1CBDB93B00621F98 /* RTMParamSigner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMParamSigner.swift; sourceTree = "<group>"; };
+		C776D0921CBDB9C100621F98 /* srtmlisttests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = srtmlisttests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C776D0961CBDB9C100621F98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C776D09A1CBDBA0200621F98 /* RTMParamSigner_test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMParamSigner_test.swift; sourceTree = "<group>"; };
+		C776D09D1CBDBD0100621F98 /* srtmlst-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "srtmlst-Bridging-Header.h"; path = "srtmlst/srtmlst-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C776D07B1CBDA49A00621F98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C776D08F1CBDB9C100621F98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C776D0751CBDA49A00621F98 = {
+			isa = PBXGroup;
+			children = (
+				C776D0801CBDA49A00621F98 /* srtmlst */,
+				C776D0931CBDB9C100621F98 /* srtmlisttests */,
+				C776D09D1CBDBD0100621F98 /* srtmlst-Bridging-Header.h */,
+				C776D07F1CBDA49A00621F98 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C776D07F1CBDA49A00621F98 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C776D07E1CBDA49A00621F98 /* srtmlst */,
+				C776D0921CBDB9C100621F98 /* srtmlisttests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C776D0801CBDA49A00621F98 /* srtmlst */ = {
+			isa = PBXGroup;
+			children = (
+				C776D0811CBDA49A00621F98 /* main.swift */,
+				C776D0881CBDA4EF00621F98 /* RTMClient.swift */,
+				C776D08A1CBDA59500621F98 /* Keyfile.swift */,
+				C776D08C1CBDB93B00621F98 /* RTMParamSigner.swift */,
+			);
+			path = srtmlst;
+			sourceTree = "<group>";
+		};
+		C776D0931CBDB9C100621F98 /* srtmlisttests */ = {
+			isa = PBXGroup;
+			children = (
+				C776D0961CBDB9C100621F98 /* Info.plist */,
+				C776D09A1CBDBA0200621F98 /* RTMParamSigner_test.swift */,
+			);
+			path = srtmlisttests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C776D07D1CBDA49A00621F98 /* srtmlst */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C776D0851CBDA49A00621F98 /* Build configuration list for PBXNativeTarget "srtmlst" */;
+			buildPhases = (
+				C776D07A1CBDA49A00621F98 /* Sources */,
+				C776D07B1CBDA49A00621F98 /* Frameworks */,
+				C776D07C1CBDA49A00621F98 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = srtmlst;
+			productName = srtmlst;
+			productReference = C776D07E1CBDA49A00621F98 /* srtmlst */;
+			productType = "com.apple.product-type.tool";
+		};
+		C776D0911CBDB9C100621F98 /* srtmlisttests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C776D0971CBDB9C100621F98 /* Build configuration list for PBXNativeTarget "srtmlisttests" */;
+			buildPhases = (
+				C776D08E1CBDB9C100621F98 /* Sources */,
+				C776D08F1CBDB9C100621F98 /* Frameworks */,
+				C776D0901CBDB9C100621F98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = srtmlisttests;
+			productName = srtmlisttests;
+			productReference = C776D0921CBDB9C100621F98 /* srtmlisttests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C776D0761CBDA49A00621F98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "George Madrid";
+				TargetAttributes = {
+					C776D07D1CBDA49A00621F98 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					C776D0911CBDB9C100621F98 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = C776D0791CBDA49A00621F98 /* Build configuration list for PBXProject "srtmlst" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C776D0751CBDA49A00621F98;
+			productRefGroup = C776D07F1CBDA49A00621F98 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C776D07D1CBDA49A00621F98 /* srtmlst */,
+				C776D0911CBDB9C100621F98 /* srtmlisttests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C776D0901CBDB9C100621F98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C776D07A1CBDA49A00621F98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C776D08B1CBDA59500621F98 /* Keyfile.swift in Sources */,
+				C776D0821CBDA49A00621F98 /* main.swift in Sources */,
+				C776D0891CBDA4EF00621F98 /* RTMClient.swift in Sources */,
+				C776D08D1CBDB93B00621F98 /* RTMParamSigner.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C776D08E1CBDB9C100621F98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C776D09C1CBDBA4800621F98 /* RTMParamSigner.swift in Sources */,
+				C776D09B1CBDBA0200621F98 /* RTMParamSigner_test.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C776D0831CBDA49A00621F98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C776D0841CBDA49A00621F98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C776D0861CBDA49A00621F98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "srtmlst/srtmlst-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C776D0871CBDA49A00621F98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "srtmlst/srtmlst-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		C776D0981CBDB9C100621F98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = srtmlisttests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = madrid.george.srtmlisttests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "srtmlst/srtmlst-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		C776D0991CBDB9C100621F98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = srtmlisttests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = madrid.george.srtmlisttests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "srtmlst/srtmlst-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C776D0791CBDA49A00621F98 /* Build configuration list for PBXProject "srtmlst" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C776D0831CBDA49A00621F98 /* Debug */,
+				C776D0841CBDA49A00621F98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C776D0851CBDA49A00621F98 /* Build configuration list for PBXNativeTarget "srtmlst" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C776D0861CBDA49A00621F98 /* Debug */,
+				C776D0871CBDA49A00621F98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C776D0971CBDB9C100621F98 /* Build configuration list for PBXNativeTarget "srtmlisttests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C776D0981CBDB9C100621F98 /* Debug */,
+				C776D0991CBDB9C100621F98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C776D0761CBDA49A00621F98 /* Project object */;
+}
