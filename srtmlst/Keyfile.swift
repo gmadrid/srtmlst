@@ -8,45 +8,42 @@
 
 import Foundation
 
-/**
- * Load a file with key/value pairs of the form:
- *  key = value
- *
- * Leading/trailing spaces are not currently supported.
- */
-class Keyfile : CustomStringConvertible {
-  enum Error : ErrorType {
-    case CouldNotEncodeContents
-    case CouldNotReadFile(filename: String)
-    case CouldNotWriteFile(filename: String)
-    case LineIsMisformed(line: String)
+enum Error : ErrorType {
+  case CouldNotEncodeContents
+  case CouldNotReadFile(filename: String)
+  case CouldNotWriteFile(filename: String)
+  case LineIsMisformed(line: String)
+  case NeedARealError
+}
+
+typealias ReadDataFromPathFunc = (String) throws -> NSData
+typealias WriteDataToPathFunc = (String, NSData) throws -> Void
+
+private func StandardReadDataFromPath(path: String) throws -> NSData {
+  guard let data = NSFileHandle(forReadingAtPath: path)?.readDataToEndOfFile() else {
+    throw Error.CouldNotReadFile(filename: path)
   }
+  return data
+}
 
-  var valueMap : [String: String] = [:]
-  var filename : String
-
-  var description: String {
-    var out = ""
-    for kvp in valueMap {
-      out += kvp.0 + " = " + kvp.1 + "\n"
-    }
-    return out
+private func StandardWriteDataToPath(path: String, data: NSData) throws {
+  guard let outFile = NSFileHandle(forWritingAtPath: path) else {
+    throw Error.CouldNotWriteFile(filename: path)
   }
+  outFile.writeData(data)
+}
 
-  init(filename: String) throws {
-    // Save this for later.
-    //    let configFilename = (NSHomeDirectory() as NSString).stringByAppendingPathComponent(".rtmcli")
+func LoadSimplePropertiesFromPath(filename: String,
+                                  readFunc: ReadDataFromPathFunc = StandardReadDataFromPath)
+  throws -> [String:String] {
 
-    self.filename = filename
+    let data = try readFunc(filename)
 
-    guard let configData = NSFileHandle(forReadingAtPath: filename)?.readDataToEndOfFile() else {
-      throw Error.CouldNotReadFile(filename: filename)
-    }
-
-    guard let configString = String(data: configData, encoding: NSASCIIStringEncoding) else {
+    guard let configString = String(data: data, encoding: NSUTF8StringEncoding) else {
       throw Error.CouldNotEncodeContents
     }
 
+    var result = [String:String]()
     let lines = configString.characters.split("\n").map(String.init)
     for line in lines {
       let pieces = line.characters.split("=").map(String.init).map { $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) }
@@ -55,22 +52,22 @@ class Keyfile : CustomStringConvertible {
         throw Error.LineIsMisformed(line: line)
       }
 
-      valueMap[pieces[0]] = pieces[1]
+      result[pieces[0]] = pieces[1]
     }
-  }
+    return result
+}
 
-  func write(filename: String) throws {
-    guard let data = description.dataUsingEncoding(NSASCIIStringEncoding) else {
+func WriteSimplePropertiesToPath(filename: String,
+                                 props: [String: String],
+                                 writeFunc: WriteDataToPathFunc = StandardWriteDataToPath)
+  throws {
+    var outString = ""
+    for key in props.keys.sort() {
+      outString += key + " = " + props[key]! + "\n"
+    }
+
+    guard let data = outString.dataUsingEncoding(NSUTF8StringEncoding) else {
       throw Error.CouldNotEncodeContents
     }
-    guard let outFile = NSFileHandle(forWritingAtPath: filename) else {
-      throw Error.CouldNotWriteFile(filename: filename)
-    }
-    outFile.writeData(data)
-  }
-
-  subscript(index: String) -> String? {
-    get { return valueMap[index] }
-    set { valueMap[index] = newValue }
-  }
+    try writeFunc(filename, data)
 }

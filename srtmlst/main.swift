@@ -9,20 +9,27 @@
 import Foundation
 
 func doMain() throws {
-  let keys = try Keyfile(filename: "/Users/gmadrid/.rtmcli")
-  guard let apiKey = keys["apiKey"] else {
+  let config = try! LoadSimplePropertiesFromPath("/Users/gmadrid/.rtmcli")
+  guard let apiKey = config["apiKey"] else {
     print("Missing apiKey")
     return
   }
-  guard let secret = keys["secret"] else {
+  guard let secret = config["secret"] else {
     print("Missing secret")
     return
   }
 
   let rtmClient = RTMClient(key: apiKey, secret: secret)
-  rtmClient.auth()
-  
-  print(rtmClient)
+  if let token = config["token"] {
+    rtmClient.token = token
+  } else {
+    rtmClient.acquireToken() { token, error in
+      print("GOT A TOKEN: \(token)")
+      print("OR ERROR: \(error)")
+    }
+  }
+
+  dispatch_main()
 }
 
 try! doMain()

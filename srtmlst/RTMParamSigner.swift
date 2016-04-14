@@ -8,15 +8,92 @@
 
 import Foundation
 
-class Signer {
-  class func sign(params: [String: String], secret: String) -> String {
+class RTMParamSigner {
+  let apiKey: String
+  let secret: String
+
+  init(apiKey: String, secret: String) {
+    self.apiKey = apiKey
+    self.secret = secret
+  }
+
+  func makeURL(method: RTMMethod) throws -> NSURL {
+    let params : [String:String] = [
+      "api_key": apiKey,
+      "method": method.method,
+
+      "format": "json"
+    ]
+    // TODO: add additional params here!
+
+    guard let components = NSURLComponents(string: method.baseUrlString) else {
+      throw Error.NeedARealError
+    }
+    components.query = signedQueryForParams(params)
+    guard let url = components.URL else {
+      throw Error.NeedARealError
+    }
+
+    return url
+
+
+    /* 
+ let params = paramsForMethod("rtm.auth.getFrob")
+ let queryString = signer.signedQueryForParams(params)
+
+ let components = NSURLComponents(string: "https://api.rememberthemilk.com/services/rest/")
+ components?.query = queryString
+ guard let url = components?.URL else {
+ // DEAL WITH ERROR HERE
+ return
+ }
+
+*/
+  }
+
+
+
+
+
+
+  func unsignedQueryForParams(paramsIn: [String:String]) -> String {
+    var params = paramsIn
+
+    var result = [String]()
+    for key in params.keys.sort() {
+      result.append("\(key)=\(params[key]!)")
+    }
+
+    return result.joinWithSeparator("&")
+  }
+
+  func signedQueryForParams(paramsIn: [String:String]) -> String {
+    var params = paramsIn
+    let signature = sign(params)
+
+    var result = [String]()
+    for key in params.keys.sort() {
+      result.append("\(key)=\(params[key]!)")
+    }
+    result.append("api_sig=\(signature)")
+
+    return result.joinWithSeparator("&")
+  }
+
+  func sign(params: [String: String]) -> String {
+    return signString(sortedStringForParams(params))
+  }
+
+  private func signString(string: String) -> String {
+    return RTMParamSigner.md5(string: secret + string)
+  }
+
+  private func sortedStringForParams(params: [String:String]) -> String {
     var paramString = ""
     for key in params.keys.sort() {
       paramString += key + params[key]!
     }
-
-    let stringToSign = secret + paramString
-    return md5(string: stringToSign)
+    return paramString
   }
 
   private class func md5(string string: String) -> String {

@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C750D69B1CBE9354006567D8 /* Keyfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D08A1CBDA59500621F98 /* Keyfile.swift */; };
+		C750D69D1CBE9735006567D8 /* Keyfile_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C750D69C1CBE9735006567D8 /* Keyfile_test.swift */; };
+		C75236431CBEDAE700AE554E /* RTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D0881CBDA4EF00621F98 /* RTMClient.swift */; };
 		C776D0821CBDA49A00621F98 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D0811CBDA49A00621F98 /* main.swift */; };
 		C776D0891CBDA4EF00621F98 /* RTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D0881CBDA4EF00621F98 /* RTMClient.swift */; };
 		C776D08B1CBDA59500621F98 /* Keyfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D08A1CBDA59500621F98 /* Keyfile.swift */; };
 		C776D08D1CBDB93B00621F98 /* RTMParamSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D08C1CBDB93B00621F98 /* RTMParamSigner.swift */; };
 		C776D09B1CBDBA0200621F98 /* RTMParamSigner_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D09A1CBDBA0200621F98 /* RTMParamSigner_test.swift */; };
 		C776D09C1CBDBA4800621F98 /* RTMParamSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D08C1CBDB93B00621F98 /* RTMParamSigner.swift */; };
+		C776D0A11CBEE30900621F98 /* RTMMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D0A01CBEE30900621F98 /* RTMMethod.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C750D69C1CBE9735006567D8 /* Keyfile_test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyfile_test.swift; sourceTree = "<group>"; };
 		C776D07E1CBDA49A00621F98 /* srtmlst */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = srtmlst; sourceTree = BUILT_PRODUCTS_DIR; };
 		C776D0811CBDA49A00621F98 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C776D0881CBDA4EF00621F98 /* RTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMClient.swift; sourceTree = "<group>"; };
@@ -37,6 +42,7 @@
 		C776D0961CBDB9C100621F98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C776D09A1CBDBA0200621F98 /* RTMParamSigner_test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMParamSigner_test.swift; sourceTree = "<group>"; };
 		C776D09D1CBDBD0100621F98 /* srtmlst-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "srtmlst-Bridging-Header.h"; path = "srtmlst/srtmlst-Bridging-Header.h"; sourceTree = "<group>"; };
+		C776D0A01CBEE30900621F98 /* RTMMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMMethod.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,7 @@
 				C776D0881CBDA4EF00621F98 /* RTMClient.swift */,
 				C776D08A1CBDA59500621F98 /* Keyfile.swift */,
 				C776D08C1CBDB93B00621F98 /* RTMParamSigner.swift */,
+				C776D0A01CBEE30900621F98 /* RTMMethod.swift */,
 			);
 			path = srtmlst;
 			sourceTree = "<group>";
@@ -92,6 +99,7 @@
 			children = (
 				C776D0961CBDB9C100621F98 /* Info.plist */,
 				C776D09A1CBDBA0200621F98 /* RTMParamSigner_test.swift */,
+				C750D69C1CBE9735006567D8 /* Keyfile_test.swift */,
 			);
 			path = srtmlisttests;
 			sourceTree = "<group>";
@@ -184,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C776D0A11CBEE30900621F98 /* RTMMethod.swift in Sources */,
 				C776D08B1CBDA59500621F98 /* Keyfile.swift in Sources */,
 				C776D0821CBDA49A00621F98 /* main.swift in Sources */,
 				C776D0891CBDA4EF00621F98 /* RTMClient.swift in Sources */,
@@ -196,6 +205,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C776D09C1CBDBA4800621F98 /* RTMParamSigner.swift in Sources */,
+				C750D69D1CBE9735006567D8 /* Keyfile_test.swift in Sources */,
+				C75236431CBEDAE700AE554E /* RTMClient.swift in Sources */,
+				C750D69B1CBE9354006567D8 /* Keyfile.swift in Sources */,
 				C776D09B1CBDBA0200621F98 /* RTMParamSigner_test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
