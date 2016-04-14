@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C739C9551CBFC94D004963A1 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C9531CBFC94D004963A1 /* Operation.swift */; };
+		C739C9561CBFC94D004963A1 /* OperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C9541CBFC94D004963A1 /* OperationQueue.swift */; };
+		C739C95B1CBFC99B004963A1 /* BlockObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C9571CBFC99B004963A1 /* BlockObserver.swift */; };
+		C739C95C1CBFC99B004963A1 /* ExclusivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C9581CBFC99B004963A1 /* ExclusivityController.swift */; };
+		C739C95D1CBFC99B004963A1 /* OperationCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C9591CBFC99B004963A1 /* OperationCondition.swift */; };
+		C739C95E1CBFC99B004963A1 /* OperationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C95A1CBFC99B004963A1 /* OperationObserver.swift */; };
+		C739C9601CBFC9E0004963A1 /* NSOperation+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C95F1CBFC9E0004963A1 /* NSOperation+Operations.swift */; };
+		C739C9621CBFCA09004963A1 /* NSLock+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C9611CBFCA09004963A1 /* NSLock+Operations.swift */; };
+		C739C9641CBFCA61004963A1 /* OperationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C9631CBFCA61004963A1 /* OperationErrors.swift */; };
 		C750D69B1CBE9354006567D8 /* Keyfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D08A1CBDA59500621F98 /* Keyfile.swift */; };
 		C750D69D1CBE9735006567D8 /* Keyfile_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C750D69C1CBE9735006567D8 /* Keyfile_test.swift */; };
 		C75236431CBEDAE700AE554E /* RTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D0881CBDA4EF00621F98 /* RTMClient.swift */; };
@@ -32,6 +41,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C739C9531CBFC94D004963A1 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		C739C9541CBFC94D004963A1 /* OperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationQueue.swift; sourceTree = "<group>"; };
+		C739C9571CBFC99B004963A1 /* BlockObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockObserver.swift; sourceTree = "<group>"; };
+		C739C9581CBFC99B004963A1 /* ExclusivityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExclusivityController.swift; sourceTree = "<group>"; };
+		C739C9591CBFC99B004963A1 /* OperationCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationCondition.swift; sourceTree = "<group>"; };
+		C739C95A1CBFC99B004963A1 /* OperationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationObserver.swift; sourceTree = "<group>"; };
+		C739C95F1CBFC9E0004963A1 /* NSOperation+Operations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSOperation+Operations.swift"; sourceTree = "<group>"; };
+		C739C9611CBFCA09004963A1 /* NSLock+Operations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLock+Operations.swift"; sourceTree = "<group>"; };
+		C739C9631CBFCA61004963A1 /* OperationErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationErrors.swift; sourceTree = "<group>"; };
 		C750D69C1CBE9735006567D8 /* Keyfile_test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyfile_test.swift; sourceTree = "<group>"; };
 		C776D07E1CBDA49A00621F98 /* srtmlst */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = srtmlst; sourceTree = BUILT_PRODUCTS_DIR; };
 		C776D0811CBDA49A00621F98 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -63,6 +81,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C739C9521CBFC92D004963A1 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				C739C9631CBFCA61004963A1 /* OperationErrors.swift */,
+				C739C9611CBFCA09004963A1 /* NSLock+Operations.swift */,
+				C739C95F1CBFC9E0004963A1 /* NSOperation+Operations.swift */,
+				C739C9571CBFC99B004963A1 /* BlockObserver.swift */,
+				C739C9581CBFC99B004963A1 /* ExclusivityController.swift */,
+				C739C9591CBFC99B004963A1 /* OperationCondition.swift */,
+				C739C95A1CBFC99B004963A1 /* OperationObserver.swift */,
+				C739C9531CBFC94D004963A1 /* Operation.swift */,
+				C739C9541CBFC94D004963A1 /* OperationQueue.swift */,
+			);
+			name = Operations;
+			path = ../operations;
+			sourceTree = "<group>";
+		};
 		C776D0751CBDA49A00621F98 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +120,7 @@
 		C776D0801CBDA49A00621F98 /* srtmlst */ = {
 			isa = PBXGroup;
 			children = (
+				C739C9521CBFC92D004963A1 /* Operations */,
 				C776D0811CBDA49A00621F98 /* main.swift */,
 				C776D0881CBDA4EF00621F98 /* RTMClient.swift */,
 				C776D08A1CBDA59500621F98 /* Keyfile.swift */,
@@ -192,11 +228,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C739C9601CBFC9E0004963A1 /* NSOperation+Operations.swift in Sources */,
+				C739C9561CBFC94D004963A1 /* OperationQueue.swift in Sources */,
+				C739C95C1CBFC99B004963A1 /* ExclusivityController.swift in Sources */,
+				C739C95B1CBFC99B004963A1 /* BlockObserver.swift in Sources */,
+				C739C9641CBFCA61004963A1 /* OperationErrors.swift in Sources */,
 				C776D0A11CBEE30900621F98 /* RTMMethod.swift in Sources */,
 				C776D08B1CBDA59500621F98 /* Keyfile.swift in Sources */,
 				C776D0821CBDA49A00621F98 /* main.swift in Sources */,
 				C776D0891CBDA4EF00621F98 /* RTMClient.swift in Sources */,
 				C776D08D1CBDB93B00621F98 /* RTMParamSigner.swift in Sources */,
+				C739C9551CBFC94D004963A1 /* Operation.swift in Sources */,
+				C739C9621CBFCA09004963A1 /* NSLock+Operations.swift in Sources */,
+				C739C95D1CBFC99B004963A1 /* OperationCondition.swift in Sources */,
+				C739C95E1CBFC99B004963A1 /* OperationObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
