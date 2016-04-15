@@ -8,6 +8,35 @@
 
 import Foundation
 
+let defaultConfigFileName = ".rtmcli"
+
+let queue = OperationQueue()
+
+class GetTokenOp : Operation, ResultConsumer {
+  var consumedResult: RTMClient?
+
+  override func execute() {
+    finish()
+  }
+}
+
+func buildAndEnqueueOperations() {
+  var ops = [Operation]()
+
+  let loadConfigOp = LoadConfigOperation(configFileName: defaultConfigFileName)
+  ops.append(loadConfigOp)
+
+  let createClientOp = CreateClientOperation()
+  createClientOp.addResultDependency(loadConfigOp)
+  ops.append(createClientOp)
+
+  let getTokenOp = GetTokenOp()
+  getTokenOp.addResultDependency(createClientOp)
+  ops.append(getTokenOp)
+
+  queue.addOperations(ops, waitUntilFinished: false)
+}
+
 func doMain() throws {
   let config = try! LoadSimplePropertiesFromPath("/Users/gmadrid/.rtmcli")
   guard let apiKey = config["apiKey"] else {
@@ -19,7 +48,7 @@ func doMain() throws {
     return
   }
 
-  let rtmClient = RTMClient(key: apiKey, secret: secret)
+  let rtmClient = RTMClient(key: apiKey, secret: secret, queue: queue)
   if let token = config["token"] {
     rtmClient.token = token
   } else {
@@ -32,4 +61,5 @@ func doMain() throws {
   dispatch_main()
 }
 
+buildAndEnqueueOperations()
 try! doMain()

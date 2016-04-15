@@ -26,7 +26,7 @@ class Keyfile_test: XCTestCase {
   }
 
   func testNamePassedToRead() {
-    try! LoadSimplePropertiesFromPath("thename") { fn in
+    try! LoadSimplePropeesFromPath("thename") { fn in
       XCTAssertEqual("thename", fn)
       return NSData()
     }
