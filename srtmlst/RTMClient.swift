@@ -56,8 +56,52 @@ class RTMClient {
     }
   }
 
-  func getLists(cb: (String?, ErrorType?) -> Void) {
-    print("XXXXXXXXXXXXX")
+  class RTMTask : CustomStringConvertible {
+    let listId: String
+    let taskSeriesId: String
+    let taskId: String
+
+    let name: String
+    let completed: Bool  // TODO: make this a date
+    let priority: String // TODO: make this an enum
+    let due: NSDate?
+
+    var description: String {
+      return "\(listId)/\(taskSeriesId)/\(taskId)"
+    }
+
+    init(listId: String, taskSeriesDict: [String:AnyObject], taskDict: [String:AnyObject]) throws {
+      self.listId = listId
+      self.taskSeriesId = try RTMClient.getField(taskSeriesDict, "id")
+      self.taskId = try RTMClient.getField(taskDict, "id")
+
+      self.name = try RTMClient.getField(taskSeriesDict, "name")
+      if let completedString: String = RTMClient.getOptionalField(taskDict, "completed") {
+        self.completed = !completedString.isEmpty
+      } else {
+        self.completed = false
+      }
+      self.priority = RTMClient.getOptionalField(taskDict, "priority") ?? "4"
+      let dueString: String = RTMClient.getOptionalField(taskDict, "due") ?? ""
+
+      // 2016-04-12T04:00:00Z
+      let formatter = NSDateFormatter()
+      formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+      formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+      formatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+
+      // TODO: Add support in here to have due times.
+      if let rawDate = formatter.dateFromString(dueString) {
+        let components = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: rawDate)
+        due = NSCalendar.currentCalendar().dateFromComponents(components)
+      } else {
+        due = NSDate.distantFuture()
+      }
+    }
+
+  }
+
+  func getLists(cb: ([RTMList]?, ErrorType?) -> Void) {
     processAPIMethod(.GetLists(token: token!), cb: cb) { rsp in
       let listsDict : [String:AnyObject] = try RTMClient.getField(rsp, "lists")
       let listList : [AnyObject] = try RTMClient.getField(listsDict, "list")
@@ -73,8 +117,31 @@ class RTMClient {
           cb(nil, error)
         }
       }
-      print("NUM ITEMS: \(result.count)")
-      return "NUM ITEMS: \(result.count)"
+      return result
+    }
+  }
+
+  func getTasks(listId: String, cb: ([RTMTask]?, ErrorType?) -> Void) {
+    processAPIMethod(.GetList(token: token!, listId: listId), cb: cb) { rsp in
+      var result = [RTMTask]()
+
+      let tasksDict : [String:AnyObject] = try RTMClient.getField(rsp, "tasks")
+      let listsList : [[String:AnyObject]] = try RTMClient.getField(tasksDict, "list")
+
+      for listDict in listsList {
+        let listId : String = try RTMClient.getField(listDict, "id")
+        let taskSeriesList : [[String:AnyObject]] = try RTMClient.getSublist(listDict, "taskseries")
+
+        for taskSeriesDict in taskSeriesList {
+          let taskList = try RTMClient.getSublist(taskSeriesDict, "task")
+          for taskDict in taskList {
+            // TODO XXX Throwing on any failed task creation might be too strict - allows death task.
+            result.append(try RTMTask(listId: listId, taskSeriesDict: taskSeriesDict, taskDict: taskDict))
+          }
+        }
+      }
+
+      return result
     }
   }
 
@@ -85,7 +152,23 @@ class RTMClient {
     return result
   }
 
-  private func processAPIMethod(method: RTMMethod, cb: (String?, ErrorType?) -> Void, processor: ([String:AnyObject]) throws -> String) {
+  private static func getOptionalField<T>(obj: [String:AnyObject], _ name: String) -> T? {
+    return obj[name] as? T
+  }
+
+  private static func getSublist(obj: [String:AnyObject], _ name: String) throws -> [[String:AnyObject]] {
+    if let resultArray = obj[name] as? [[String:AnyObject]] {
+      return resultArray
+    }
+
+    if let resultObj = obj[name] as? [String:AnyObject] {
+      return [resultObj]
+    }
+
+    throw AppError.MissingValue(name: name)
+  }
+
+  private func processAPIMethod<ResultType>(method: RTMMethod, cb: (ResultType?, ErrorType?) -> Void, processor: ([String:AnyObject]) throws -> ResultType) {
     do {
       let url = try signer.makeURL(method)
       session.dataTaskWithURL(url) { data, _, error in
@@ -97,6 +180,9 @@ class RTMClient {
           guard let data = data else {
             throw AppError.MissingDataForMethod(methodName: method.method)
           }
+
+//          let foo = String(data:data, encoding:NSASCIIStringEncoding)
+//          print(foo)
 
           guard let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as? [String:AnyObject] else {
             throw AppError.BadlyFormattedJSON(desc: "Top-level object parse failed")

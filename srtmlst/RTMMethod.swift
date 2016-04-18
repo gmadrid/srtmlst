@@ -12,6 +12,7 @@ enum RTMMethod {
   case CheckToken(token: String)
   case GetFrob
   case GetLists(token: String)
+  case GetList(token: String, listId: String)
   case GetToken(frob: String)
 
   var baseUrlString: String {
@@ -22,6 +23,7 @@ enum RTMMethod {
     switch self  {
     case .CheckToken: return "rtm.auth.checkToken"
     case .GetFrob: return "rtm.auth.getFrob"
+    case .GetList: return "rtm.tasks.getList"
     case .GetLists: return "rtm.lists.getList"
     case .GetToken: return "rtm.auth.getToken"
     }
@@ -31,6 +33,7 @@ enum RTMMethod {
     switch self {
     case .CheckToken(let token): return [ "auth_token" : token]
     case .GetToken(let frob): return [ "frob" : frob ]
+    case .GetList(let token, let listId): return [ "auth_token": token, "list_id": listId ]
     case .GetLists(let token): return [ "auth_token" : token ]
     default: return [:]
     }

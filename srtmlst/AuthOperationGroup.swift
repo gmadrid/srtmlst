@@ -51,7 +51,6 @@ class AuthOperationGroup : GroupOperation, ResultConsumer, ResultProvider {
     if let token = config["token"] {
       client.token = token
       verifyOp = VerifyTokenOperation(client: client)
-      print("adding verify")
       addOperation(verifyOp!)
     } else {
       verifyOp = nil
@@ -77,16 +76,12 @@ class VerifyTokenOperation : Operation {
   }
 
   override func execute() {
-    print("foobar")
     guard let token = client.token else {
       finishWithError(AppError.MissingToken.nserror)
       return
     }
     client.checkToken(token) { [weak self] result, error in
       // TODO: error checking
-      print(error)
-      print(result)
-      print("SSSS: \(self)")
       self?.finish()
     }
   }
