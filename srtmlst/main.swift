@@ -73,7 +73,7 @@ class PrintListOperation : Operation, ResultConsumer {
           return $0.name.caseInsensitiveCompare($1.name) == .OrderedAscending
         }
         for task in sorted {
-          print("\(task.priority): \(task.name)")
+          print("\(task.priority): \u{1b}[31m\(task.name)\u{1b}[0m")
         }
 
         self?.finish()
