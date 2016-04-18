@@ -57,28 +57,21 @@ class RTMClient {
     do {
       let url = try signer.makeURL(method)
       session.dataTaskWithURL(url) { data, _, error in
-        guard error == nil else {
-          cb(nil, error)
-          return
-        }
-
-        guard let data = data else {
-          cb(nil, AppError.MissingDataForMethod(methodName: method.method))
-          return
-        }
-
         do {
+          guard error == nil else {
+            throw error!
+          }
+
+          guard let data = data else {
+            throw AppError.MissingDataForMethod(methodName: method.method)
+          }
+
           guard let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as? [String:AnyObject] else {
             throw AppError.BadlyFormattedJSON(desc: "Top-level object parse failed")
           }
 
-          guard let rsp = json["rsp"] as? [String:AnyObject] else {
-            throw AppError.BadlyFormattedJSON(desc: "Missing rsp")
-          }
-
-          guard let stat = rsp["stat"] as? String else {
-            throw AppError.BadlyFormattedJSON(desc: "Missing stat")
-          }
+          let rsp : [String:AnyObject] = try RTMClient.getField(json, "rsp")
+          let stat : String = try RTMClient.getField(rsp, "stat")
 
           guard stat == "ok" else {
             let msg: String = rsp["err"] as? String ?? "Missing \"err\" on error response"
