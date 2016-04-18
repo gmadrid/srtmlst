@@ -47,20 +47,20 @@ class AuthOperationGroup : GroupOperation, ResultConsumer, ResultProvider {
     }
 
     let client = RTMClient(key: apiKey, secret: secret)
-//    let verifyOp: VerifyTokenOperation?
-//    if let token = config["token"] {
-//      client.token = token
-//      verifyOp = VerifyTokenOperation(client: client)
-//      print("adding verify")
-//      addOperation(verifyOp!)
-//    } else {
-//      verifyOp = nil
-//    }
+    let verifyOp: VerifyTokenOperation?
+    if let token = config["token"] {
+      client.token = token
+      verifyOp = VerifyTokenOperation(client: client)
+      print("adding verify")
+      addOperation(verifyOp!)
+    } else {
+      verifyOp = nil
+    }
 
     let acquireOp = AcquireTokenOperation(client: client)
-//    if let verifyOp = verifyOp {
-//      acquireOp.addDependency(verifyOp)
-//    }
+    if let verifyOp = verifyOp {
+      acquireOp.addDependency(verifyOp)
+    }
     addOperation(acquireOp)
 
     providedResult = client
@@ -149,6 +149,20 @@ class AcquireTokenOperation : Operation {
       stdIn.readDataOfLength(1)
 
       strongSelf.client.getToken(frob) { token, error in
+        let toSave = [
+          "apiKey": strongSelf.client.signer.apiKey,
+          "secret": strongSelf.client.signer.secret,
+          "token": token!
+        ]
+
+        do {
+          // TODO: this is ugly
+          try WriteSimplePropertiesToPath("/Users/gmadrid/.rtmcli", props: toSave)
+        } catch {
+          strongSelf.finishWithError(error.nserror)
+          return
+        }
+
         strongSelf.finish()
       }
     }
