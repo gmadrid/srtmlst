@@ -46,6 +46,38 @@ class RTMClient {
     }
   }
 
+  class RTMList {
+    let id: String
+    let name: String
+
+    init(dict: [String:AnyObject]) throws {
+      id = try RTMClient.getField(dict, "id")
+      name = try RTMClient.getField(dict, "name")
+    }
+  }
+
+  func getLists(cb: (String?, ErrorType?) -> Void) {
+    print("XXXXXXXXXXXXX")
+    processAPIMethod(.GetLists(token: token!), cb: cb) { rsp in
+      let listsDict : [String:AnyObject] = try RTMClient.getField(rsp, "lists")
+      let listList : [AnyObject] = try RTMClient.getField(listsDict, "list")
+
+      var result = [RTMList]()
+      for listDict in listList {
+        do {
+          guard let typedList = listDict as? [String:AnyObject] else {
+            throw AppError.BadlyFormattedJSON(desc: "List item of wrong type")
+          }
+          result.append(try RTMList(dict: typedList))
+        } catch {
+          cb(nil, error)
+        }
+      }
+      print("NUM ITEMS: \(result.count)")
+      return "NUM ITEMS: \(result.count)"
+    }
+  }
+
   private static func getField<T>(obj: [String:AnyObject], _ name: String) throws -> T {
     guard let result = obj[name] as? T else {
       throw AppError.MissingValue(name: name)

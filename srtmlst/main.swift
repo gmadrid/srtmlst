@@ -12,13 +12,25 @@ let defaultConfigFileName = ".rtmcli"
 
 let queue = OperationQueue()
 
-//class GetTokenOp : Operation, ResultConsumer {
-//  var consumedResult: RTMClient?
-//
-//  override func execute() {
-//    finish()
-//  }
-//}
+class GetListsOperation : Operation, ResultConsumer {
+  var consumedResult: RTMClient?
+
+  override func execute() {
+    do {
+      print("HERE EXECUTING")
+      guard let client = consumedResult else {
+        throw AppError.MissingResult(className: "GetListsOperation")
+      }
+
+      print("WOOAIT")
+      client.getLists() { lists, error in
+        print("WHATWHAT")
+      }
+    } catch {
+      finishWithError(error.nserror)
+    }
+  }
+}
 
 func buildAndEnqueueOperations() {
   var ops = [Operation]()
@@ -30,13 +42,16 @@ func buildAndEnqueueOperations() {
   authOp.addResultDependency(loadConfigOp)
   ops.append(authOp)
 
-//  let createClientOp = CreateClientOperation()
-//  createClientOp.addResultDependency(loadConfigOp)
-//  ops.append(createClientOp)
-//
-//  let getTokenOp = GetTokenOp()
-//  getTokenOp.addResultDependency(createClientOp)
-//  ops.append(getTokenOp)
+  let getListsOp = GetListsOperation()
+  getListsOp.addResultDependency(authOp)
+  ops.append(getListsOp)
+
+//  let listTasks = ListTasksOperation()
+//  authOp.addResultDependency(authOp)
+//  ops.append(listTasks)
+
+  let dumpOp = DumpErrorsOperation(otherOp: getListsOp)
+  ops.append(dumpOp)
 
   queue.addOperations(ops, waitUntilFinished: false)
 }
