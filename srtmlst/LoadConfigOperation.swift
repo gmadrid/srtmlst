@@ -21,12 +21,15 @@ class LoadConfigOperation : Operation, ResultProvider {
     }
   }
 
+  deinit {
+    print("KILLED LCO")
+  }
+
   override func execute() {
     do {
       providedResult = try LoadSimplePropertiesFromPath(configFilePath)
       finish()
     } catch {
-      print("exceptions, please: \(error)")
       finishWithError(error.nserror)
     }
   }

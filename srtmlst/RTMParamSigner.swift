@@ -18,40 +18,30 @@ class RTMParamSigner {
   }
 
   func makeURL(method: RTMMethod) throws -> NSURL {
-    let params : [String:String] = [
+    var params : [String:String] = [
       "api_key": apiKey,
       "method": method.method,
 
       "format": "json"
     ]
-    // TODO: add additional params here!
+    for pairs in method.params {
+      params[pairs.0] = pairs.1
+    }
 
     guard let components = NSURLComponents(string: method.baseUrlString) else {
       throw Error.NeedARealError
     }
+    return try makeURLWithComponents(components, params: params)
+  }
+
+  func makeURLWithComponents(components: NSURLComponents, params: [String:String]) throws -> NSURL {
     components.query = signedQueryForParams(params)
     guard let url = components.URL else {
       throw Error.NeedARealError
     }
 
     return url
-
-
-    /* 
- let params = paramsForMethod("rtm.auth.getFrob")
- let queryString = signer.signedQueryForParams(params)
-
- let components = NSURLComponents(string: "https://api.rememberthemilk.com/services/rest/")
- components?.query = queryString
- guard let url = components?.URL else {
- // DEAL WITH ERROR HERE
- return
- }
-
-*/
   }
-
-
 
 
 

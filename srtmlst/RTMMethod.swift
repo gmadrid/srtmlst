@@ -8,15 +8,28 @@
 
 import Foundation
 
-protocol RTMMethod {
-  var method: String { get }
-  var baseUrlString: String { get }
-}
+enum RTMMethod {
+  case CheckToken(token: String)
+  case GetFrob
+  case GetToken(frob: String)
 
-extension RTMMethod {
-  var baseUrlString: String { return "https://api.rememberthemilk.com/services/rest/" }
-}
+  var baseUrlString: String {
+    return "https://api.rememberthemilk.com/services/rest/"
+  }
 
-class RTMGetFrobMethod : RTMMethod {
-  var method: String = "rtm.auth.getFrob"
+  var method: String {
+    switch self  {
+    case .CheckToken: return "rtm.auth.checkToken"
+    case .GetFrob: return "rtm.auth.getFrob"
+    case .GetToken: return "rtm.auth.getToken"
+    }
+  }
+
+  var params: [String:String] {
+    switch self {
+    case .CheckToken(let token): return [ "auth_token" : token]
+    case .GetToken(let frob): return [ "frob" : frob ]
+    default: return [:]
+    }
+  }
 }

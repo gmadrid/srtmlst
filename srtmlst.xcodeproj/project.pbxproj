@@ -21,6 +21,7 @@
 		C739C9601CBFC9E0004963A1 /* NSOperation+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C95F1CBFC9E0004963A1 /* NSOperation+Operations.swift */; };
 		C739C9621CBFCA09004963A1 /* NSLock+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C9611CBFCA09004963A1 /* NSLock+Operations.swift */; };
 		C739C9641CBFCA61004963A1 /* OperationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C9631CBFCA61004963A1 /* OperationErrors.swift */; };
+		C739C9911CC138CB004963A1 /* GroupOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C9901CC138CB004963A1 /* GroupOperation.swift */; };
 		C750D69B1CBE9354006567D8 /* Keyfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D08A1CBDA59500621F98 /* Keyfile.swift */; };
 		C750D69D1CBE9735006567D8 /* Keyfile_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C750D69C1CBE9735006567D8 /* Keyfile_test.swift */; };
 		C75236431CBEDAE700AE554E /* RTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D0881CBDA4EF00621F98 /* RTMClient.swift */; };
@@ -34,6 +35,7 @@
 		C776D09B1CBDBA0200621F98 /* RTMParamSigner_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D09A1CBDBA0200621F98 /* RTMParamSigner_test.swift */; };
 		C776D09C1CBDBA4800621F98 /* RTMParamSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D08C1CBDB93B00621F98 /* RTMParamSigner.swift */; };
 		C776D0A11CBEE30900621F98 /* RTMMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776D0A01CBEE30900621F98 /* RTMMethod.swift */; };
+		C7D17E051CC4378600DDBD4F /* AuthOperationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D17E041CC4378600DDBD4F /* AuthOperationGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,6 +65,7 @@
 		C739C95F1CBFC9E0004963A1 /* NSOperation+Operations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSOperation+Operations.swift"; sourceTree = "<group>"; };
 		C739C9611CBFCA09004963A1 /* NSLock+Operations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLock+Operations.swift"; sourceTree = "<group>"; };
 		C739C9631CBFCA61004963A1 /* OperationErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationErrors.swift; sourceTree = "<group>"; };
+		C739C9901CC138CB004963A1 /* GroupOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupOperation.swift; sourceTree = "<group>"; };
 		C750D69C1CBE9735006567D8 /* Keyfile_test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyfile_test.swift; sourceTree = "<group>"; };
 		C75236441CC00EFF00AE554E /* BasicObservers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicObservers.swift; sourceTree = "<group>"; };
 		C75236471CC0109200AE554E /* ResultOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultOperations.swift; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 		C776D09A1CBDBA0200621F98 /* RTMParamSigner_test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMParamSigner_test.swift; sourceTree = "<group>"; };
 		C776D09D1CBDBD0100621F98 /* srtmlst-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "srtmlst-Bridging-Header.h"; path = "srtmlst/srtmlst-Bridging-Header.h"; sourceTree = "<group>"; };
 		C776D0A01CBEE30900621F98 /* RTMMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMMethod.swift; sourceTree = "<group>"; };
+		C7D17E041CC4378600DDBD4F /* AuthOperationGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthOperationGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 				C70EFE681CC05A5B00160F18 /* PrintOperation.swift */,
 				C70EFE6C1CC0750E00160F18 /* LoadConfigOperation.swift */,
 				C70EFE6E1CC07D0600160F18 /* CreateClientOperation.swift */,
+				C7D17E041CC4378600DDBD4F /* AuthOperationGroup.swift */,
 			);
 			name = AppOperations;
 			sourceTree = "<group>";
@@ -111,15 +116,16 @@
 		C739C9521CBFC92D004963A1 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				C739C9531CBFC94D004963A1 /* Operation.swift */,
+				C739C9541CBFC94D004963A1 /* OperationQueue.swift */,
+				C739C9591CBFC99B004963A1 /* OperationCondition.swift */,
+				C739C95A1CBFC99B004963A1 /* OperationObserver.swift */,
+				C739C9581CBFC99B004963A1 /* ExclusivityController.swift */,
 				C739C9631CBFCA61004963A1 /* OperationErrors.swift */,
 				C739C9611CBFCA09004963A1 /* NSLock+Operations.swift */,
 				C739C95F1CBFC9E0004963A1 /* NSOperation+Operations.swift */,
 				C739C9571CBFC99B004963A1 /* BlockObserver.swift */,
-				C739C9581CBFC99B004963A1 /* ExclusivityController.swift */,
-				C739C9591CBFC99B004963A1 /* OperationCondition.swift */,
-				C739C95A1CBFC99B004963A1 /* OperationObserver.swift */,
-				C739C9531CBFC94D004963A1 /* Operation.swift */,
-				C739C9541CBFC94D004963A1 /* OperationQueue.swift */,
+				C739C9901CC138CB004963A1 /* GroupOperation.swift */,
 			);
 			name = Operations;
 			path = ../operations;
@@ -275,9 +281,11 @@
 				C739C95B1CBFC99B004963A1 /* BlockObserver.swift in Sources */,
 				C752364A1CC0156600AE554E /* AppError.swift in Sources */,
 				C75236481CC0109200AE554E /* ResultOperations.swift in Sources */,
+				C739C9911CC138CB004963A1 /* GroupOperation.swift in Sources */,
 				C70EFE6D1CC0750E00160F18 /* LoadConfigOperation.swift in Sources */,
 				C739C9641CBFCA61004963A1 /* OperationErrors.swift in Sources */,
 				C776D0A11CBEE30900621F98 /* RTMMethod.swift in Sources */,
+				C7D17E051CC4378600DDBD4F /* AuthOperationGroup.swift in Sources */,
 				C776D08B1CBDA59500621F98 /* Keyfile.swift in Sources */,
 				C776D0821CBDA49A00621F98 /* main.swift in Sources */,
 				C776D0891CBDA4EF00621F98 /* RTMClient.swift in Sources */,

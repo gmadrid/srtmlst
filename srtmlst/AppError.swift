@@ -25,9 +25,13 @@ extension CustomErrorConvertible {
 }
 
 enum AppError : ErrorType, CustomErrorConvertible {
+  case BadlyFormattedJSON(desc: String)
   case CompositeError(errors: [NSError])
+  case MissingDataForMethod(methodName: String)
   case MissingResult(className: String)
+  case MissingToken
   case MissingValue(name: String)
+  case RTMError(err: String)
 
   var domain: String { return "AppError" }
   var errorCode: Int {
@@ -38,6 +42,11 @@ enum AppError : ErrorType, CustomErrorConvertible {
       return 2
     case .MissingValue:
       return 3
+    case .MissingToken:
+      return 4
+    case .BadlyFormattedJSON: return 5
+    case .MissingDataForMethod: return 6
+    case .RTMError: return 7
     }
   }
   var userInfo: [String : AnyObject]? {
@@ -45,14 +54,22 @@ enum AppError : ErrorType, CustomErrorConvertible {
     result["ErrorType"] = String(self)
 
     switch self {
+    case .BadlyFormattedJSON(let desc): result["JSON format error"] = desc
     case .CompositeError(let errors):
       result["ContainedErrors"] = errors
 
+    case .MissingDataForMethod(let methodName): result["method"] = methodName
     case .MissingResult(let className):
       result["ClassName"] = className
 
     case .MissingValue(let name):
       result["ValueName"] = name
+
+    case .RTMError(let err): result["RTM error"] = err
+
+    case .MissingToken:
+      // No userInfo
+      break
     }
     return result
   }

@@ -19,6 +19,10 @@ class FailureCondition : OperationCondition {
     self.error = error
   }
 
+  deinit {
+    print("CONDITION DEINIT")
+  }
+
   func dependencyForOperation(operation: Operation) -> NSOperation? { return nil }
   func evaluateForOperation(operation: Operation, completion: OperationConditionResult -> Void) {
     completion(.Failed(error))
