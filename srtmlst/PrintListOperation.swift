@@ -8,6 +8,18 @@
 
 import Foundation
 
+func idfunc<T>(lhs: T) -> T {
+  return lhs
+}
+
+func red(str: String) -> String {
+  return "\u{1b}[31m\(str)\u{1b}[0m"
+}
+
+func bold(str: String) -> String {
+  return "\u{1b}[1m\(str)\u{1b}[0m"
+}
+
 class PrintListOperation : Operation, ResultConsumer {
   var consumedResult: (RTMClient, [RTMClient.RTMList])?
 
@@ -30,7 +42,6 @@ class PrintListOperation : Operation, ResultConsumer {
     // * today:        "Today"
     // * tomorrow:     "Tomorrow"
     // * in next week: "Wed" (or whatever)
-    // * after that:   "Jun 18" (if this year)
     // * otherwise:    "Jan 2, 2017"
 
     let calendar = NSCalendar.currentCalendar()
@@ -96,7 +107,16 @@ class PrintListOperation : Operation, ResultConsumer {
             lastHeader = thisHeader
           }
 
-          print("\(task.priority): \(task.name)")
+          // TODO: this is ugly as hell
+          let f: String -> String
+          if thisHeader == "Overdue" {
+            f = red
+          } else if thisHeader == "Today" && task.priority == "1" {
+            f = bold
+          } else {
+            f = idfunc
+          }
+          print(f("\(task.priority): \(task.name)"))
         }
 
         self?.finish()

@@ -8,6 +8,8 @@
 
 import Foundation
 
+let flags = getCommandFlags()
+
 let defaultConfigFileName = ".rtmcli"
 
 let queue = OperationQueue()
