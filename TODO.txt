@@ -8,3 +8,4 @@
 * change Operations to work with ErrorType
 * memory leak check
 * clean up closure capture
+

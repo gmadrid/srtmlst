@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C709510F1CC696AC001A3E74 /* colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C709510E1CC696AC001A3E74 /* colors.swift */; };
 		C70EFE661CC059B700160F18 /* FailureCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70EFE651CC059B700160F18 /* FailureCondition.swift */; };
 		C70EFE691CC05A5B00160F18 /* PrintOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70EFE681CC05A5B00160F18 /* PrintOperation.swift */; };
 		C70EFE6B1CC05AAD00160F18 /* DumpErrorsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70EFE6A1CC05AAD00160F18 /* DumpErrorsOperation.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C709510E1CC696AC001A3E74 /* colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = colors.swift; sourceTree = "<group>"; };
 		C70EFE651CC059B700160F18 /* FailureCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailureCondition.swift; sourceTree = "<group>"; };
 		C70EFE681CC05A5B00160F18 /* PrintOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintOperation.swift; sourceTree = "<group>"; };
 		C70EFE6A1CC05AAD00160F18 /* DumpErrorsOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DumpErrorsOperation.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				C739C9521CBFC92D004963A1 /* Operations */,
 				C75236491CC0156600AE554E /* AppError.swift */,
 				C72FAEFE1CC5E8ED000F05E7 /* Flags.swift */,
+				C709510E1CC696AC001A3E74 /* colors.swift */,
 			);
 			path = srtmlst;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				C72FAEFF1CC5E8ED000F05E7 /* Flags.swift in Sources */,
 				C752364A1CC0156600AE554E /* AppError.swift in Sources */,
 				C75236481CC0109200AE554E /* ResultOperations.swift in Sources */,
+				C709510F1CC696AC001A3E74 /* colors.swift in Sources */,
 				C739C9911CC138CB004963A1 /* GroupOperation.swift in Sources */,
 				C70EFE6D1CC0750E00160F18 /* LoadConfigOperation.swift in Sources */,
 				C739C9641CBFCA61004963A1 /* OperationErrors.swift in Sources */,
@@ -418,6 +422,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "srtmlst/srtmlst-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -429,6 +434,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "srtmlst/srtmlst-Bridging-Header.h";
 			};
 			name = Release;

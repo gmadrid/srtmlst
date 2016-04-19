@@ -100,23 +100,35 @@ class PrintListOperation : Operation, ResultConsumer {
           return $0.name.caseInsensitiveCompare($1.name) == .OrderedAscending
         }
         var lastHeader = ""
+        var lastPriority: String? = nil
+        var showingIntense = false
         for task in sorted {
           let thisHeader = PrintListOperation.relativeDate(task.due ?? NSDate.distantFuture())
           if thisHeader != lastHeader {
             print("========== \(thisHeader) =========")
+            if ["Overdue", ""].contains(lastHeader) && thisHeader != "Overdue" {
+              // We just changed from overdue or this is our first header (that is not Overdue),
+              // so the next header priority combination is intense.
+              lastPriority = task.priority
+              showingIntense = true
+            } else if showingIntense {
+              showingIntense = false
+            }
             lastHeader = thisHeader
           }
 
-          // TODO: this is ugly as hell
-          let f: String -> String
-          if thisHeader == "Overdue" {
-            f = red
-          } else if thisHeader == "Today" && task.priority == "1" {
-            f = bold
-          } else {
-            f = idfunc
+          if task.priority != lastPriority {
+            showingIntense = false
           }
-          print(f("\(task.priority): \(task.name)"))
+
+          // TODO: this is ugly as hell
+          var val = "\(task.priority): \(task.name)"
+          if thisHeader == "Overdue" {
+            val = val.red()
+          } else if showingIntense {
+            val = val.intense()
+          }
+          print(val)
         }
 
         self?.finish()
