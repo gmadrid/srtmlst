@@ -11,6 +11,9 @@
 		C70EFE691CC05A5B00160F18 /* PrintOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70EFE681CC05A5B00160F18 /* PrintOperation.swift */; };
 		C70EFE6B1CC05AAD00160F18 /* DumpErrorsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70EFE6A1CC05AAD00160F18 /* DumpErrorsOperation.swift */; };
 		C70EFE6D1CC0750E00160F18 /* LoadConfigOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70EFE6C1CC0750E00160F18 /* LoadConfigOperation.swift */; };
+		C72FAEF81CC56B84000F05E7 /* GetListsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72FAEF71CC56B84000F05E7 /* GetListsOperation.swift */; };
+		C72FAEFA1CC56BA9000F05E7 /* QuitAfterOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72FAEF91CC56BA9000F05E7 /* QuitAfterOperation.swift */; };
+		C72FAEFC1CC56BD1000F05E7 /* PrintListOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72FAEFB1CC56BD1000F05E7 /* PrintListOperation.swift */; };
 		C739C9551CBFC94D004963A1 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C9531CBFC94D004963A1 /* Operation.swift */; };
 		C739C9561CBFC94D004963A1 /* OperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C9541CBFC94D004963A1 /* OperationQueue.swift */; };
 		C739C95B1CBFC99B004963A1 /* BlockObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C739C9571CBFC99B004963A1 /* BlockObserver.swift */; };
@@ -54,6 +57,10 @@
 		C70EFE681CC05A5B00160F18 /* PrintOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintOperation.swift; sourceTree = "<group>"; };
 		C70EFE6A1CC05AAD00160F18 /* DumpErrorsOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DumpErrorsOperation.swift; sourceTree = "<group>"; };
 		C70EFE6C1CC0750E00160F18 /* LoadConfigOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadConfigOperation.swift; sourceTree = "<group>"; };
+		C72FAEF71CC56B84000F05E7 /* GetListsOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetListsOperation.swift; sourceTree = "<group>"; };
+		C72FAEF91CC56BA9000F05E7 /* QuitAfterOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuitAfterOperation.swift; sourceTree = "<group>"; };
+		C72FAEFB1CC56BD1000F05E7 /* PrintListOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintListOperation.swift; sourceTree = "<group>"; };
+		C72FAEFD1CC56BFB000F05E7 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		C739C9531CBFC94D004963A1 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		C739C9541CBFC94D004963A1 /* OperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationQueue.swift; sourceTree = "<group>"; };
 		C739C9571CBFC99B004963A1 /* BlockObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockObserver.swift; sourceTree = "<group>"; };
@@ -106,6 +113,9 @@
 				C70EFE681CC05A5B00160F18 /* PrintOperation.swift */,
 				C70EFE6C1CC0750E00160F18 /* LoadConfigOperation.swift */,
 				C7D17E041CC4378600DDBD4F /* AuthOperationGroup.swift */,
+				C72FAEF71CC56B84000F05E7 /* GetListsOperation.swift */,
+				C72FAEF91CC56BA9000F05E7 /* QuitAfterOperation.swift */,
+				C72FAEFB1CC56BD1000F05E7 /* PrintListOperation.swift */,
 			);
 			name = AppOperations;
 			sourceTree = "<group>";
@@ -141,6 +151,7 @@
 		C776D0751CBDA49A00621F98 = {
 			isa = PBXGroup;
 			children = (
+				C72FAEFD1CC56BFB000F05E7 /* TODO.txt */,
 				C776D0801CBDA49A00621F98 /* srtmlst */,
 				C776D0931CBDB9C100621F98 /* srtmlisttests */,
 				C776D09D1CBDBD0100621F98 /* srtmlst-Bridging-Header.h */,
@@ -273,6 +284,7 @@
 			files = (
 				C70EFE661CC059B700160F18 /* FailureCondition.swift in Sources */,
 				C739C9601CBFC9E0004963A1 /* NSOperation+Operations.swift in Sources */,
+				C72FAEF81CC56B84000F05E7 /* GetListsOperation.swift in Sources */,
 				C739C9561CBFC94D004963A1 /* OperationQueue.swift in Sources */,
 				C739C95C1CBFC99B004963A1 /* ExclusivityController.swift in Sources */,
 				C739C95B1CBFC99B004963A1 /* BlockObserver.swift in Sources */,
@@ -287,9 +299,11 @@
 				C776D0821CBDA49A00621F98 /* main.swift in Sources */,
 				C776D0891CBDA4EF00621F98 /* RTMClient.swift in Sources */,
 				C776D08D1CBDB93B00621F98 /* RTMParamSigner.swift in Sources */,
+				C72FAEFA1CC56BA9000F05E7 /* QuitAfterOperation.swift in Sources */,
 				C75236451CC00EFF00AE554E /* BasicObservers.swift in Sources */,
 				C739C9551CBFC94D004963A1 /* Operation.swift in Sources */,
 				C739C9621CBFCA09004963A1 /* NSLock+Operations.swift in Sources */,
+				C72FAEFC1CC56BD1000F05E7 /* PrintListOperation.swift in Sources */,
 				C70EFE6B1CC05AAD00160F18 /* DumpErrorsOperation.swift in Sources */,
 				C739C95D1CBFC99B004963A1 /* OperationCondition.swift in Sources */,
 				C739C95E1CBFC99B004963A1 /* OperationObserver.swift in Sources */,

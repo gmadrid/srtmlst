@@ -1,0 +1,12 @@
+TODO
+
+* select desired list by name or id
+* choose to include recently closed
+* do filters on server
+* rate limit the RTMClient
+* sort DWIM - Everything that is due grouped together in red at top. Then natural sort for stuff not yet due
+* colors - pick some 
+* clean up the Errors
+* change Operations to work with ErrorType
+* memory leak check
+* clean up closure capture

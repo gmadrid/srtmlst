@@ -34,7 +34,7 @@ enum AppError : ErrorType, CustomErrorConvertible {
   case MissingValue(name: String)
   case RTMError(err: String)
 
-  var domain: String { return "AppError" }
+  var domain: String { return "org.gmadrid.srtmlst.ErrorDomain" }
   var errorCode: Int {
     switch self {
     case .CompositeError:
