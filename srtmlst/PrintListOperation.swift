@@ -11,7 +11,18 @@ import Foundation
 class PrintListOperation : Operation, ResultConsumer {
   var consumedResult: (RTMClient, [RTMClient.RTMList])?
 
-  var currentHeader: String = ""
+  private static var relativeFormatter: NSDateFormatter = {
+    let result = NSDateFormatter()
+    result.dateStyle = .ShortStyle
+    result.doesRelativeDateFormatting = true
+    return result
+  }()
+
+  private static var dowFormatter: NSDateFormatter = {
+    let result = NSDateFormatter()
+    result.dateFormat = "ccc"
+    return result
+  }()
 
   private static func relativeDate(date: NSDate) -> String {
     // We want:
@@ -21,13 +32,6 @@ class PrintListOperation : Operation, ResultConsumer {
     // * in next week: "Wed" (or whatever)
     // * after that:   "Jun 18" (if this year)
     // * otherwise:    "Jan 2, 2017"
-
-    let relativeFormatter = NSDateFormatter()
-    relativeFormatter.dateStyle = .ShortStyle
-    relativeFormatter.doesRelativeDateFormatting = true
-
-    let dowFormatter = NSDateFormatter()
-    dowFormatter.dateFormat = "ccc"
 
     let calendar = NSCalendar.currentCalendar()
     let now = NSDate()
