@@ -1,5 +1,3 @@
-TODO
-
 * select desired list by name or id
 * choose to include recently closed
 * do filters on server
