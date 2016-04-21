@@ -69,7 +69,7 @@ class PrintListOperation : Operation, ResultConsumer {
         throw AppError.MissingResult(className: "PrintListOperation")
       }
 
-      guard let index = (lists.indexOf { $0.name == "Next week and next actions" }) else {
+      guard let index = (lists.indexOf { $0.name == "Next week" }) else {
         // XXX TODO fill out this error. It's user facing.
         throw AppError.GenericError(msg: "Missing the requested list")
       }

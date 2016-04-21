@@ -11,6 +11,9 @@ import Foundation
 var doColors: Bool = true
 
 func applyEscCodes(str: String, prefix: String?, suffix: String?) -> String {
+  guard flags.boolValue("colors") else {
+    return str
+  }
   let p = prefix ?? ""
   let s = suffix ?? ""
 
@@ -35,5 +38,9 @@ extension String {
 
   func intense() -> String {
     return applyScrCodes(self, startCode: 1, endCode: 0)
+  }
+
+  var boolValue : Bool {
+    return ["True", "true", "yes", "1"].contains(self)
   }
 }

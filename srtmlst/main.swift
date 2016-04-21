@@ -8,16 +8,18 @@
 
 import Foundation
 
-let flags = getCommandFlags()
-
-let defaultConfigFileName = ".rtmcli"
+let flags = Flags(flagList: [
+  "configfile": ".rtmcli",
+  "colors": "true"
+  ])
 
 let queue = OperationQueue()
 
 func buildAndEnqueueOperations() {
   var ops = [Operation]()
 
-  let loadConfigOp = LoadConfigOperation(configFileName: defaultConfigFileName)
+  let configFileName = flags.stringValue("configfile")
+  let loadConfigOp = LoadConfigOperation(configFileName: configFileName)
   ops.append(loadConfigOp)
 
   let authOp = AuthOperationGroup()

@@ -8,4 +8,9 @@
 * change Operations to work with ErrorType
 * memory leak check
 * clean up closure capture
+* Break Operations and Tools into separable repos
+* RTM helper - something to upgrade RTM items to NA status when there isn't one.
+* TODO check
+* clean up error handling
 
+* allow requesting tasks without a list id.

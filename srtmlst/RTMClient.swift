@@ -72,7 +72,11 @@ class RTMClient {
 
     init(listId: String, taskSeriesDict: [String:AnyObject], taskDict: [String:AnyObject]) throws {
       self.listId = listId
-      self.taskSeriesId = try RTMClient.getField(taskSeriesDict, "id")
+      do {
+        self.taskSeriesId = try RTMClient.getField(taskSeriesDict, "id")
+      } catch {
+        throw error
+      }
       self.taskId = try RTMClient.getField(taskDict, "id")
 
       self.name = try RTMClient.getField(taskSeriesDict, "name")
@@ -121,7 +125,7 @@ class RTMClient {
     }
   }
 
-  func getTasks(listId: String, cb: ([RTMTask]?, ErrorType?) -> Void) {
+  func getTasks(listId: String?, cb: ([RTMTask]?, ErrorType?) -> Void) {
     processAPIMethod(.GetList(token: token!, listId: listId), cb: cb) { rsp in
       var result = [RTMTask]()
 
@@ -130,7 +134,12 @@ class RTMClient {
 
       for listDict in listsList {
         let listId : String = try RTMClient.getField(listDict, "id")
-        let taskSeriesList : [[String:AnyObject]] = try RTMClient.getSublist(listDict, "taskseries")
+        let taskSeriesList: [[String:AnyObject]]
+        do {
+          taskSeriesList = try RTMClient.getSublist(listDict, "taskseries")
+        } catch {
+          throw error
+        }
 
         for taskSeriesDict in taskSeriesList {
           let taskList = try RTMClient.getSublist(taskSeriesDict, "task")
@@ -165,7 +174,7 @@ class RTMClient {
       return [resultObj]
     }
 
-    throw AppError.MissingValue(name: name)
+    return []
   }
 
   private func processAPIMethod<ResultType>(method: RTMMethod, cb: (ResultType?, ErrorType?) -> Void, processor: ([String:AnyObject]) throws -> ResultType) {
